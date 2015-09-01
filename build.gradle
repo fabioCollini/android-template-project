@@ -9,8 +9,6 @@ buildscript {
     }
 }
 
-apply plugin: 'com.github.ben-manes.versions'
-
 allprojects {
     repositories {
         jcenter()
@@ -19,6 +17,15 @@ allprojects {
 
 allprojects {
     apply plugin: 'com.github.ben-manes.versions'
+
+    ext.supportLibraryVer = '23.0.0'
+    ext.supportAnnotations = "com.android.support:support-annotations:${supportLibraryVer}"
+
+    ext.junitVer = '4.12'
+    ext.junit = "junit:junit:${junitVer}"
+
+    ext.mockitoVer = '1.10.17'
+    ext.mockito = "org.mockito:mockito-all:${mockitoVer}"
 }
 
 allprojects {
