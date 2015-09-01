@@ -1,2 +1,12 @@
 # Gradle
 .gradle
+
+# JetBrains
+*.iml
+.idea
+
+# Android
+local.properties
+
+# Mac
+.DS_Store
