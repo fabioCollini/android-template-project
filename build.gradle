@@ -18,6 +18,11 @@ allprojects {
 allprojects {
     apply plugin: 'com.github.ben-manes.versions'
 
+    ext.compileSdkVer = 23
+    ext.buildToolsVer = '23.0.0'
+    ext.minSdkVer = 17
+    ext.targetSdkVer = 23
+
     ext.supportLibraryVer = '23.0.0'
     ext.supportAnnotations = "com.android.support:support-annotations:${supportLibraryVer}"
 
