@@ -22,6 +22,10 @@ android {
       consumerProguardFiles 'proguard-rules.pro'
     }
   }
+
+  lintOptions {
+    lintConfig file( 'lint.xml' )
+  }
 }
 
 dependencies {
