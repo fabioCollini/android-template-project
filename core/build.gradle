@@ -1,19 +1,49 @@
-apply plugin: 'java'
+apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
 
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
+android {
+  compileSdkVersion compileSdkVer
+  buildToolsVersion buildToolsVer
 
-def logger = new com.android.build.gradle.internal.LoggerWrapper( project.logger )
-def sdkHandler = new com.android.build.gradle.internal.SdkHandler( project, logger )
-for ( File file : sdkHandler.sdkLoader.repositories )
-{
-  project.repositories.maven {
-    url = file.toURI()
+  defaultConfig {
+    minSdkVersion minSdkVer
+    targetSdkVersion targetSdkVer
+    versionCode 1
+    versionName '1.0'
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  buildTypes {
+    release {
+      consumerProguardFiles 'proguard-rules.pro'
+    }
+  }
+
+  lintOptions {
+    lintConfig file( 'lint.xml' )
+  }
+}
+
+repositories {
+  maven {
+    url uri( "file://${System.env.ANDROID_HOME}/extras/android/m2repository" )
   }
 }
 
 dependencies {
+  compile javaxInject
+  compile dagger
+  apt daggerCompiler
+  provided javaxAnnotations
+
   compile supportAnnotations
+
+  compile rxJava
 
   testCompile junit
   testCompile mockito

@@ -7,6 +7,7 @@ buildscript {
     classpath 'com.android.tools.build:gradle:1.3.0'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.11.3'
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
+    classpath 'me.tatarka:gradle-retrolambda:3.2.3'
   }
 }
 
@@ -20,12 +21,14 @@ allprojects {
   apply plugin: 'com.github.ben-manes.versions'
 
   ext.compileSdkVer = 23
-  ext.buildToolsVer = '23.0.0'
+  ext.buildToolsVer = '23.0.2'
   ext.minSdkVer = 17
   ext.targetSdkVer = 23
 
-  ext.supportLibraryVer = '23.0.0'
+  ext.supportLibraryVer = '23.1.0'
   ext.supportAnnotations = "com.android.support:support-annotations:${supportLibraryVer}"
+  ext.supportAppCompat = "com.android.support:appcompat-v7:${supportLibraryVer}"
+  ext.supportDesign = "com.android.support:design:${supportLibraryVer}"
 
   ext.javaxInjectVer = '1'
   ext.javaxInject = "javax.inject:javax.inject:${javaxInjectVer}"
@@ -37,8 +40,26 @@ allprojects {
   ext.javaxAnnotationsVer = '10.0-b28'
   ext.javaxAnnotations = "org.glassfish:javax.annotation:${javaxAnnotationsVer}"
 
-  ext.retrofitVer = '2.0.0-beta1'
+  ext.rxJavaVer = '1.0.15'
+  ext.rxJava = "io.reactivex:rxjava:${rxJavaVer}"
+
+  ext.rxAndroidVer = '1.0.1'
+  ext.rxAndroid = "io.reactivex:rxandroid:${rxAndroidVer}"
+
+  ext.retrofitVer = '2.0.0-beta2'
   ext.retrofit = "com.squareup.retrofit:retrofit:${retrofitVer}"
+  ext.retrofitGsonConverter = "com.squareup.retrofit:converter-gson:${retrofitVer}"
+  ext.retrofitRxAdapter = "com.squareup.retrofit:adapter-rxjava:${retrofitVer}"
+
+  ext.butterKnifeVer = '7.0.1'
+  ext.butterKnife = "com.jakewharton:butterknife:${butterKnifeVer}"
+
+  ext.ormLiteVer = '4.48'
+  ext.ormLiteCore = "com.j256.ormlite:ormlite-core:${ormLiteVer}"
+  ext.ormLiteAndroid = "com.j256.ormlite:ormlite-android:${ormLiteVer}"
+
+  ext.glideVer = '3.6.1'
+  ext.glide = "com.github.bumptech.glide:glide:${glideVer}"
 
   ext.junitVer = '4.12'
   ext.junit = "junit:junit:${junitVer}"
@@ -48,6 +69,12 @@ allprojects {
 
   ext.assertJVer = '2.1.0'
   ext.assertJCore = "org.assertj:assertj-core:${assertJVer}"
+
+  ext.androidAssertJVer = '1.1.1'
+  ext.androidAssertJ = "com.squareup.assertj:assertj-android:${androidAssertJVer}"
+
+  ext.robolectricVer = '3.0'
+  ext.robolectric = "org.robolectric:robolectric:${robolectricVer}"
 }
 
 allprojects {
@@ -59,7 +86,5 @@ allprojects {
 }
 
 task wrapper( type: Wrapper ) {
-  gradleVersion = '2.4'
+  gradleVersion = '2.8'
 }
-
-

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
   compileSdkVersion compileSdkVer
@@ -13,8 +14,8 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_7
-    targetCompatibility JavaVersion.VERSION_1_7
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
   }
 
   buildTypes {
@@ -36,6 +37,13 @@ dependencies {
   apt daggerCompiler
   provided javaxAnnotations
 
-  compile retrofit
+  compile rxJava
 
+  compile retrofit
+  compile retrofitRxAdapter
+  compile retrofitGsonConverter
+
+  testCompile junit
+  testCompile mockito
+  testCompile assertJCore
 }
