@@ -5,19 +5,19 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserTest
+public class BrokerTest
 {
-    private User user;
+    private Broker broker;
 
     @Before
     public void setUp()
     {
-        user = new User( "user" );
+        broker = new Broker( "broker" );
     }
 
     @Test
-    public void ShouldReturnUserName_WhenToStringCalled()
+    public void ShouldReturnBrokerName_WhenToStringCalled()
     {
-        assertThat( user.toString() ).isEqualTo( "user" );
+        assertThat( broker.toString() ).isEqualTo( "broker" );
     }
 }
