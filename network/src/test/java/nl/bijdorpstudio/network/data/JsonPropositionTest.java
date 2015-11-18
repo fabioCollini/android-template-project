@@ -34,9 +34,8 @@ public class JsonPropositionTest
         assertThat( proposition.getCity() ).isEqualTo( city );
     }
 
-    private JsonProposition constructJsonProposition( long id, int numberOfRooms, String address,
-                                                              String postcode, String city, long brokerId,
-                                                              String brokerName )
+    private JsonProposition constructJsonProposition( long id, int numberOfRooms, String address, String postcode,
+                                                      String city, long brokerId, String brokerName )
     {
         final String json = String.format(
             "{\"AantalKamers\":%d, \"Adres\":\"%s\", \"GlobalId\":%d, \"Postcode\":\"%s\", \"Woonplaats\":\"%s\", "
@@ -88,5 +87,17 @@ public class JsonPropositionTest
 
         assertThat( coreBroker.getId() ).isEqualTo( brokerId );
         assertThat( coreBroker.getName() ).isEqualTo( brokerName );
+    }
+
+    @Test
+    public void ShouldReturnUnkwon_WhenBrokerNameIsNull()
+        throws Exception
+    {
+        final String json =
+            "{\"AantalKamers\":2, \"Adres\":\"\", \"GlobalId\":2, \"Postcode\":\"\", \"Woonplaats\":\"\", "
+                + "\"MakelaarNaam\":null, \"MakelaarId\":4}";
+        final JsonProposition proposition = new GsonBuilder().create().fromJson( json, JsonProposition.class );
+
+        assertThat( proposition.getBrokerName() ).isEqualTo( "Unknown" );
     }
 }
