@@ -10,7 +10,7 @@ import java.util.List;
 public class JsonResponse
 {
     @SerializedName( "Objects" )
-    private List<JsonProposition> houses;
+    private List<JsonProposition> propositions;
 
     @SerializedName( "Paging" )
     private JsonPaging pagination;
@@ -25,6 +25,11 @@ public class JsonResponse
 
     public List<Proposition> getPropositions()
     {
-        return Observable.from( houses ).map( JsonProposition::toCoreProposition ).toList().toBlocking().first();
+        return Observable.from( propositions ).map( JsonProposition::toCoreProposition ).toList().toBlocking().first();
+    }
+
+    public int getNumberOfPropositions()
+    {
+        return numberOfObjects;
     }
 }

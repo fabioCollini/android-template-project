@@ -23,7 +23,7 @@ public class JsonPropositionTest
         String city = "Ams";
 
         JsonProposition proposition =
-            constructJsonPropositionForHouse( houseId, numberOfRooms, address, postcode, city, brokerId, brokerName );
+            constructJsonProposition( houseId, numberOfRooms, address, postcode, city, brokerId, brokerName );
 
         assertThat( proposition.getBrokerId() ).isEqualTo( brokerId );
         assertThat( proposition.getBrokerName() ).isEqualTo( brokerName );
@@ -34,7 +34,7 @@ public class JsonPropositionTest
         assertThat( proposition.getCity() ).isEqualTo( city );
     }
 
-    private JsonProposition constructJsonPropositionForHouse( long id, int numberOfRooms, String address,
+    private JsonProposition constructJsonProposition( long id, int numberOfRooms, String address,
                                                               String postcode, String city, long brokerId,
                                                               String brokerName )
     {
@@ -59,7 +59,7 @@ public class JsonPropositionTest
         String city = "City";
 
         JsonProposition proposition =
-            constructJsonPropositionForHouse( houseId, numberOfRooms, address, postcode, city, brokerId, brokerName );
+            constructJsonProposition( houseId, numberOfRooms, address, postcode, city, brokerId, brokerName );
         House coreHouse = proposition.toCoreProposition().getHouse();
 
         assertThat( coreHouse.getId() ).isEqualTo( houseId );
@@ -83,7 +83,7 @@ public class JsonPropositionTest
         String city = "City";
 
         JsonProposition proposition =
-            constructJsonPropositionForHouse( houseId, numberOfRooms, address, postcode, city, brokerId, brokerName );
+            constructJsonProposition( houseId, numberOfRooms, address, postcode, city, brokerId, brokerName );
         Broker coreBroker = proposition.toCoreProposition().getBroker();
 
         assertThat( coreBroker.getId() ).isEqualTo( brokerId );
