@@ -31,9 +31,11 @@ public class FundaIntegrationTest
         throws Exception
     {
         JsonResponse response =
-            fundaService.queryData( SERVICE_KEY, "koop", "/Amstelveen", 0, 100 ).toBlocking().first();
+            fundaService.queryData( SERVICE_KEY, "koop", "/Amstelveen", 0, 20 ).toBlocking().first();
 
         assertThat( response ).isNotNull();
+        assertThat( response.getPagination() ).isNotNull();
+        assertThat( response.getHouses().size() ).isNotZero();
     }
 
 }

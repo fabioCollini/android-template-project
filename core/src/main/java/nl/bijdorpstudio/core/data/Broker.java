@@ -1,4 +1,4 @@
-package nl.bijdorpstudio.core;
+package nl.bijdorpstudio.core.data;
 
 import android.support.annotation.NonNull;
 

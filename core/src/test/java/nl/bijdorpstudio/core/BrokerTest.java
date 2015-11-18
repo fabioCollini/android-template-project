@@ -1,5 +1,6 @@
 package nl.bijdorpstudio.core;
 
+import nl.bijdorpstudio.core.data.Broker;
 import org.junit.Before;
 import org.junit.Test;
 
