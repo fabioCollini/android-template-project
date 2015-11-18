@@ -7,8 +7,11 @@ public class Broker
     @NonNull
     private final String brokerName;
 
-    public Broker( @NonNull String brokerName )
+    private final long id;
+
+    public Broker( final long id, @NonNull final String brokerName )
     {
+        this.id = id;
         this.brokerName = brokerName;
     }
 

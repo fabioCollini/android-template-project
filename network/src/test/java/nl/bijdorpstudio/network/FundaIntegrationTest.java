@@ -35,7 +35,7 @@ public class FundaIntegrationTest
 
         assertThat( response ).isNotNull();
         assertThat( response.getPagination() ).isNotNull();
-        assertThat( response.getHouses().size() ).isNotZero();
+        assertThat( response.getPropositions().size() ).isNotZero();
     }
 
 }

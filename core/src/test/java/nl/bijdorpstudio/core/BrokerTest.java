@@ -13,7 +13,7 @@ public class BrokerTest
     @Before
     public void setUp()
     {
-        broker = new Broker( "broker" );
+        broker = new Broker( 12, "broker" );
     }
 
     @Test

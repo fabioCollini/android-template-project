@@ -15,4 +15,14 @@ public class JsonPaging
     {
         return new Pagination( currentPage, numberOfPages );
     }
+
+    public int getNumberOfPages()
+    {
+        return numberOfPages;
+    }
+
+    public int getCurrentPage()
+    {
+        return currentPage;
+    }
 }
