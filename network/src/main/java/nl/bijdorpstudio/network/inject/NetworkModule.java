@@ -27,6 +27,7 @@ public class NetworkModule
 
     @Singleton
     @Provides
+    @NonNull
     public FundaService provideUserService()
     {
         Retrofit retrofit = new Retrofit.Builder().baseUrl( baseUrl ).addConverterFactory(
@@ -36,7 +37,8 @@ public class NetworkModule
     }
 
     @Provides
-    public String getSeviceKee()
+    @NonNull
+    public String getServiceKey()
     {
         return serviceKey;
     }
