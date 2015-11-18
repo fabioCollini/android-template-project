@@ -19,4 +19,15 @@ public class Broker
     {
         return brokerName;
     }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    @NonNull
+    public String getName()
+    {
+        return brokerName;
+    }
 }

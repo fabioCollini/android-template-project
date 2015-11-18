@@ -1,5 +1,7 @@
 package nl.bijdorpstudio.network.data;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.google.gson.annotations.SerializedName;
 import nl.bijdorpstudio.core.data.Broker;
 import nl.bijdorpstudio.core.data.House;
@@ -11,7 +13,7 @@ public class JsonProposition
     private int numberOfRooms;
 
     @SerializedName( "GlobalId" )
-    private long id;
+    private long houseId;
 
     @SerializedName( "Adres" )
     private String address;
@@ -30,7 +32,46 @@ public class JsonProposition
 
     public Proposition toCoreProposition()
     {
-        return new Proposition( new House( id, address, postcode, city, numberOfRooms ),
+        return new Proposition( new House( houseId, address, postcode, city, numberOfRooms ),
                                 new Broker( brokerId, brokerName ) );
+    }
+
+    public long getBrokerId()
+    {
+        return brokerId;
+    }
+
+    @Nullable
+    public String getBrokerName()
+    {
+        return brokerName;
+    }
+
+    public long getHouseId()
+    {
+        return houseId;
+    }
+
+    @NonNull
+    public String getAddress()
+    {
+        return address;
+    }
+
+    @NonNull
+    public String getPostcode()
+    {
+        return postcode;
+    }
+
+    @NonNull
+    public String getCity()
+    {
+        return city;
+    }
+
+    public int getNumberOfRooms()
+    {
+        return numberOfRooms;
     }
 }

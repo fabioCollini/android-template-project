@@ -15,4 +15,16 @@ public class Proposition
         this.house = house;
         this.broker = broker;
     }
+
+    @NonNull
+    public House getHouse()
+    {
+        return house;
+    }
+
+    @NonNull
+    public Broker getBroker()
+    {
+        return broker;
+    }
 }

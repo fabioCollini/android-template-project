@@ -26,4 +26,32 @@ public class House
         this.city = city;
         this.numberOfRooms = numberOfRooms;
     }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    public int getNumberOfRooms()
+    {
+        return numberOfRooms;
+    }
+
+    @NonNull
+    public String getAddress()
+    {
+        return address;
+    }
+
+    @NonNull
+    public String getPostcode()
+    {
+        return postcode;
+    }
+
+    @NonNull
+    public String getCity()
+    {
+        return city;
+    }
 }
