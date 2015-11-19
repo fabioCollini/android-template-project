@@ -21,4 +21,14 @@ public class Pagination
     {
         return currentPage;
     }
+
+    public int getNextPage()
+    {
+        return currentPage + 1;
+    }
+
+    public boolean isLastPage()
+    {
+        return currentPage == numberOfPages - 1;
+    }
 }
