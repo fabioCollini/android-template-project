@@ -40,7 +40,7 @@ allprojects {
   ext.javaxAnnotationsVer = '10.0-b28'
   ext.javaxAnnotations = "org.glassfish:javax.annotation:${javaxAnnotationsVer}"
 
-  ext.rxJavaVer = '1.0.15'
+  ext.rxJavaVer = '1.0.16'
   ext.rxJava = "io.reactivex:rxjava:${rxJavaVer}"
 
   ext.rxAndroidVer = '1.0.1'
