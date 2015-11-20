@@ -7,13 +7,6 @@
                                                  android:fitsSystemWindows="true"
                                                  tools:context="nl.bijdorpstudio.funda.app.ui.MainActivity">
 
-  <android.support.v7.widget.Toolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize"
-      app:layout_collapseMode="pin"
-      app:popupTheme="@style/AppTheme.PopupOverlay" />
-
   <android.support.v7.widget.RecyclerView
       android:id="@+id/recycler_view"
       android:layout_width="match_parent"

@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Pair;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,9 +26,6 @@ public class MainActivity
 {
     @Bind( R.id.recycler_view )
     RecyclerView recyclerView;
-
-    @Bind( R.id.toolbar )
-    Toolbar toolbar;
 
     private BrokersAdapter borkersAdapter;
 
@@ -73,8 +69,6 @@ public class MainActivity
         setContentView( R.layout.activity_main );
 
         ButterKnife.bind( this );
-
-//        setSupportActionBar( toolbar );
 
         prepareRecyclerView();
     }
