@@ -27,7 +27,7 @@ public class MainActivity
     @Bind( R.id.recycler_view )
     RecyclerView recyclerView;
 
-    private BrokersAdapter borkersAdapter;
+    private BrokersAdapter brokersAdapter;
 
     private Funda funda;
 
@@ -45,12 +45,13 @@ public class MainActivity
 
     private void callFunda()
     {
-        final Observable<List<Pair<Broker, Integer>>> fundaThroatledLast =
+        final Observable<List<Pair<Broker, Integer>>> fundaThrottledLast =
             funda.topBrokers( "/Amstelveen", 10 ).throttleWithTimeout( 50, TimeUnit.MILLISECONDS );
-        Observable.interval( 400L, TimeUnit.MILLISECONDS ).zipWith( fundaThroatledLast,
+
+        Observable.interval( 300L, TimeUnit.MILLISECONDS ).zipWith( fundaThrottledLast,
                                                                     ( time, list ) -> list ).subscribeOn(
             Schedulers.newThread() ).observeOn( AndroidSchedulers.mainThread() ).subscribe(
-            borkersAdapter::setBrokers );
+            brokersAdapter::setBrokers );
     }
 
     private void injectDependencies()
@@ -60,7 +61,7 @@ public class MainActivity
             (AppComponent) getApplicationContext().getSystemService( FundaApp.APP_INJECTION );
         final ActivityComponent activityComponent = component.getActivityComponent();
 
-        borkersAdapter = activityComponent.createBrokersAdapter();
+        brokersAdapter = activityComponent.createBrokersAdapter();
         funda = activityComponent.getFundaService();
     }
 
@@ -79,6 +80,6 @@ public class MainActivity
         layoutManager.setOrientation( LinearLayoutManager.VERTICAL );
         recyclerView.setLayoutManager( layoutManager );
         recyclerView.setItemAnimator( new DefaultItemAnimator() );
-        recyclerView.setAdapter( borkersAdapter );
+        recyclerView.setAdapter( brokersAdapter );
     }
 }
