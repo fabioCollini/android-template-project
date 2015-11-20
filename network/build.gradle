@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+  compileSdkVersion compileSdkVer
+  buildToolsVersion buildToolsVer
+
+  defaultConfig {
+    minSdkVersion minSdkVer
+    targetSdkVersion targetSdkVer
+    versionCode 1
+    versionName '1.0'
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  buildTypes {
+    release {
+      consumerProguardFiles 'proguard-rules.pro'
+    }
+  }
+
+  lintOptions {
+    lintConfig file( 'lint.xml' )
+  }
+}
+
+dependencies {
+  compile project( ':core' )
+
+  compile javaxInject
+  compile dagger
+  apt daggerCompiler
+  provided javaxAnnotations
+
+  compile rxJava
+
+  compile retrofit
+  compile retrofitRxAdapter
+  compile retrofitGsonConverter
+
+  testCompile junit
+  testCompile mockito
+  testCompile assertJCore
+  testCompile robolectric
+}
