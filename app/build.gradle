@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+  compileSdkVersion 23
+  buildToolsVersion "23.0.2"
+
+  defaultConfig {
+    applicationId "nl.bijdorpstudio.funda.app"
+    minSdkVersion 17
+    targetSdkVersion 23
+    versionCode 1
+    versionName "1.0"
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile( 'proguard-android.txt' ), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  compile javaxInject
+  compile dagger
+  apt daggerCompiler
+  provided javaxAnnotations
+
+  compile project( ':core' )
+  compile project( ':network' )
+
+  compile supportAnnotations
+  compile supportAppCompat
+  compile supportDesign
+
+  compile rxJava
+  compile rxAndroid
+
+  compile butterKnife
+
+  testCompile junit
+  testCompile mockito
+  testCompile assertJCore
+  testCompile robolectric
+  testCompile( androidAssertJ ) {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  }
+}
