@@ -33,7 +33,7 @@ allprojects {
   ext.javaxInjectVer = '1'
   ext.javaxInject = "javax.inject:javax.inject:${javaxInjectVer}"
 
-  ext.daggerVer = '2.0.1'
+  ext.daggerVer = '2.0.2'
   ext.dagger = "com.google.dagger:dagger:${daggerVer}"
   ext.daggerCompiler = "com.google.dagger:dagger-compiler:${daggerVer}"
 
