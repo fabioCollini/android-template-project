@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="funda_url" translatable="false">http://partnerapi.funda.nl</string>
+  <string name="funda_key" translatable="false">005e7c1d6f6c4f9bacac16760286e3cd</string>
+</resources>

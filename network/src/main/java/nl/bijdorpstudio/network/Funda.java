@@ -10,6 +10,7 @@ import rx.Observable;
 
 import javax.inject.Inject;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -29,7 +30,7 @@ public class Funda
         this.apiKey = apiKey;
     }
 
-    Observable<List<Pair<Broker, Integer>>> topBrokers( @NonNull final String search, final int topNumber )
+    public Observable<List<Pair<Broker, Integer>>> topBrokers( @NonNull final String search, final int topNumber )
     {
         return Observable.create( subscriber -> {
             Pagination pagination = new Pagination( -1, Integer.MAX_VALUE );
@@ -68,7 +69,28 @@ public class Funda
 
         Observable.from( brokers.keySet() ).forEach( queue::add );
 
-        return Observable.from( queue ).map( broker -> new Pair<>( broker, brokers.get( broker ) ) ).take(
+        Iterable<Broker> iterable = () -> new Iterator()
+        {
+            @Override
+            public boolean hasNext()
+            {
+                return queue.size() > 0;
+            }
+
+            @Override
+            public Broker next()
+            {
+                return queue.poll();
+            }
+
+            @Override
+            public void remove()
+            {
+
+            }
+        };
+
+        return Observable.from( iterable ).map( broker -> new Pair<>( broker, brokers.get( broker ) ) ).take(
             topNumber ).toList().toBlocking().first();
     }
 

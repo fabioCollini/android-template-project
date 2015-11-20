@@ -1,0 +1,90 @@
+package nl.bijdorpstudio.funda.app.ui;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Pair;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import nl.bijdorpstudio.core.data.Broker;
+import nl.bijdorpstudio.funda.app.FundaApp;
+import nl.bijdorpstudio.funda.app.R;
+import nl.bijdorpstudio.funda.app.inject.ActivityComponent;
+import nl.bijdorpstudio.funda.app.inject.AppComponent;
+import nl.bijdorpstudio.network.Funda;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class MainActivity
+    extends AppCompatActivity
+{
+    @Bind( R.id.recycler_view )
+    RecyclerView recyclerView;
+
+    @Bind( R.id.toolbar )
+    Toolbar toolbar;
+
+    private BrokersAdapter borkersAdapter;
+
+    private Funda funda;
+
+    @Override
+    protected void onCreate( Bundle savedInstanceState )
+    {
+        super.onCreate( savedInstanceState );
+
+        injectDependencies();
+
+        setupUI();
+
+        callFunda();
+    }
+
+    private void callFunda()
+    {
+        final Observable<List<Pair<Broker, Integer>>> fundaThroatledLast =
+            funda.topBrokers( "/Amstelveen", 10 ).throttleWithTimeout( 50, TimeUnit.MILLISECONDS );
+        Observable.interval( 400L, TimeUnit.MILLISECONDS ).zipWith( fundaThroatledLast,
+                                                                    ( time, list ) -> list ).subscribeOn(
+            Schedulers.newThread() ).observeOn( AndroidSchedulers.mainThread() ).subscribe(
+            borkersAdapter::setBrokers );
+    }
+
+    private void injectDependencies()
+    {
+        //noinspection ResourceType
+        final AppComponent component =
+            (AppComponent) getApplicationContext().getSystemService( FundaApp.APP_INJECTION );
+        final ActivityComponent activityComponent = component.getActivityComponent();
+
+        borkersAdapter = activityComponent.createBrokersAdapter();
+        funda = activityComponent.getFundaService();
+    }
+
+    private void setupUI()
+    {
+        setContentView( R.layout.activity_main );
+
+        ButterKnife.bind( this );
+
+//        setSupportActionBar( toolbar );
+
+        prepareRecyclerView();
+    }
+
+    private void prepareRecyclerView()
+    {
+        final LinearLayoutManager layoutManager = new LinearLayoutManager( recyclerView.getContext() );
+        layoutManager.setOrientation( LinearLayoutManager.VERTICAL );
+        recyclerView.setLayoutManager( layoutManager );
+        recyclerView.setItemAnimator( new DefaultItemAnimator() );
+        recyclerView.setAdapter( borkersAdapter );
+    }
+}
