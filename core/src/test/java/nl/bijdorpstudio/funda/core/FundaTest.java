@@ -1,7 +1,6 @@
 package nl.bijdorpstudio.funda.core;
 
 import android.util.Pair;
-import nl.bijdorpstudio.core.BuildConfig;
 import nl.bijdorpstudio.funda.core.data.Broker;
 import nl.bijdorpstudio.funda.core.data.House;
 import nl.bijdorpstudio.funda.core.data.Proposition;
