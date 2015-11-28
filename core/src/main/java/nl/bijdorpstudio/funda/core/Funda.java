@@ -18,6 +18,8 @@ import java.util.PriorityQueue;
 
 public class Funda
 {
+    public static final String BUY_QUERY_TYPE = "koop";
+
     @NonNull
     private final Network network;
 
@@ -37,7 +39,7 @@ public class Funda
             do
             {
                 final Response response =
-                    network.queryData( "koop", search, pagination.getNextPage(), 25 ).toBlocking().first();
+                    network.queryData( BUY_QUERY_TYPE, search, pagination.getNextPage(), 25 ).toBlocking().first();
 
                 pagination = response.getPagination();
 
