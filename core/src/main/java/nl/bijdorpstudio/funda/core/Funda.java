@@ -3,9 +3,9 @@ package nl.bijdorpstudio.funda.core;
 import android.support.annotation.NonNull;
 import android.util.Pair;
 import nl.bijdorpstudio.funda.core.data.Broker;
-import nl.bijdorpstudio.funda.core.network.Pagination;
 import nl.bijdorpstudio.funda.core.data.Proposition;
 import nl.bijdorpstudio.funda.core.network.Network;
+import nl.bijdorpstudio.funda.core.network.Pagination;
 import nl.bijdorpstudio.funda.core.network.Response;
 import rx.Observable;
 
