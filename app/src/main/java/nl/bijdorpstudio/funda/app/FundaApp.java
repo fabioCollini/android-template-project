@@ -3,7 +3,7 @@ package nl.bijdorpstudio.funda.app;
 import android.app.Application;
 import nl.bijdorpstudio.funda.app.inject.AppComponent;
 import nl.bijdorpstudio.funda.app.inject.DaggerAppComponent;
-import nl.bijdorpstudio.network.inject.NetworkModule;
+import nl.bijdorpstudio.funda.network.inject.NetworkModule;
 
 public class FundaApp
     extends Application

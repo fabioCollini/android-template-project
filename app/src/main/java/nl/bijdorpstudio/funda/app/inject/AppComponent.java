@@ -1,8 +1,8 @@
 package nl.bijdorpstudio.funda.app.inject;
 
 import dagger.Component;
-import nl.bijdorpstudio.network.Funda;
-import nl.bijdorpstudio.network.inject.NetworkModule;
+import nl.bijdorpstudio.funda.core.Funda;
+import nl.bijdorpstudio.funda.network.inject.NetworkModule;
 
 import javax.inject.Singleton;
 

@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import nl.bijdorpstudio.core.data.Broker;
 import nl.bijdorpstudio.funda.app.R;
+import nl.bijdorpstudio.funda.core.data.Broker;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
