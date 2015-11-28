@@ -21,14 +21,10 @@ public class Funda
     @NonNull
     private final Network network;
 
-    @NonNull
-    private final String apiKey;
-
     @Inject
-    public Funda( @NonNull final Network network, @NonNull final String apiKey )
+    public Funda( @NonNull final Network network )
     {
         this.network = network;
-        this.apiKey = apiKey;
     }
 
     public Observable<List<Pair<Broker, Integer>>> topBrokers( @NonNull final String search, final int topNumber )
@@ -41,7 +37,7 @@ public class Funda
             do
             {
                 final Response response =
-                    network.queryData( apiKey, "koop", search, pagination.getNextPage(), 25 ).toBlocking().first();
+                    network.queryData( "koop", search, pagination.getNextPage(), 25 ).toBlocking().first();
 
                 pagination = response.getPagination();
 

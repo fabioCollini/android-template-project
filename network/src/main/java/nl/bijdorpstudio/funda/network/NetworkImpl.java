@@ -16,15 +16,19 @@ public class NetworkImpl
     @NonNull
     private final FundaService fundaService;
 
-    public NetworkImpl( @NonNull FundaService fundaService )
+    @NonNull
+    private final String apiKey;
+
+    public NetworkImpl( @NonNull FundaService fundaService, @NonNull final String apiKey )
     {
         this.fundaService = fundaService;
+        this.apiKey = apiKey;
     }
 
     @NonNull
     @Override
-    public Observable<Response> queryData( @NonNull final String apiKey, @NonNull final String queryType,
-                                           @NonNull final String queryString, final int pageIndex, final int pageSize )
+    public Observable<Response> queryData( @NonNull final String queryType, @NonNull final String queryString,
+                                           final int pageIndex, final int pageSize )
     {
         return fundaService.queryData( apiKey, queryType, queryString, pageIndex, pageSize ).map(
             JsonResponse::toCoreResponse );

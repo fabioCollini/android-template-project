@@ -48,8 +48,8 @@ public class NetworkModule
     @Singleton
     @Provides
     @NonNull
-    public Network provideNetwork( @NonNull final FundaService fundaService )
+    public Network provideNetwork( @NonNull final FundaService fundaService, @NonNull final String apiKey )
     {
-        return new NetworkImpl( fundaService );
+        return new NetworkImpl( fundaService, apiKey );
     }
 }

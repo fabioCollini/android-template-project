@@ -6,6 +6,6 @@ import rx.Observable;
 public interface Network
 {
     @NonNull
-    Observable<Response> queryData( @NonNull String apiKey, @NonNull String queryType, @NonNull String queryString,
-                                    int pageIndex, int pageSize );
+    Observable<Response> queryData( @NonNull String queryType, @NonNull String queryString, int pageIndex,
+                                    int pageSize );
 }

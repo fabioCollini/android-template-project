@@ -28,8 +28,6 @@ import static org.mockito.MockitoAnnotations.initMocks;
 @Config( constants = BuildConfig.class, sdk = 21 )
 public class FundaTest
 {
-    private static final String SERVICE_KEY = "005e7c1d6f6c4f9bacac16760286e3cd";
-
     @Mock
     private Network networkMock;
 
@@ -41,7 +39,7 @@ public class FundaTest
     {
         initMocks( this );
 
-        funda = new Funda( networkMock, SERVICE_KEY );
+        funda = new Funda( networkMock );
     }
 
     @Test
@@ -49,8 +47,7 @@ public class FundaTest
         throws Exception
     {
         Observable<Response> response = constructResponseWithTwoPropositions();
-        when( networkMock.queryData( anyString(), anyString(), anyString(), anyInt(), anyInt() ) ).thenReturn(
-            response );
+        when( networkMock.queryData( anyString(), anyString(), anyInt(), anyInt() ) ).thenReturn( response );
 
         final List<Pair<Broker, Integer>> result = funda.topBrokers( "/Amstelveen", 10 ).toBlocking().first();
 
