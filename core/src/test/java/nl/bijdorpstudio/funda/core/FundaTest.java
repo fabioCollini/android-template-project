@@ -27,7 +27,7 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 @RunWith( RobolectricGradleTestRunner.class )
 @Config( constants = BuildConfig.class, sdk = 21 )
-public class FundaIntegrationTest
+public class FundaTest
 {
     private static final String SERVICE_KEY = "005e7c1d6f6c4f9bacac16760286e3cd";
 
