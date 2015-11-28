@@ -29,12 +29,6 @@ android {
   }
 }
 
-repositories {
-  maven {
-    url uri( "file://${System.env.ANDROID_HOME}/extras/android/m2repository" )
-  }
-}
-
 dependencies {
   compile javaxInject
   compile dagger
