@@ -54,10 +54,6 @@ allprojects {
   ext.butterKnifeVer = '7.0.1'
   ext.butterKnife = "com.jakewharton:butterknife:${butterKnifeVer}"
 
-  ext.ormLiteVer = '4.48'
-  ext.ormLiteCore = "com.j256.ormlite:ormlite-core:${ormLiteVer}"
-  ext.ormLiteAndroid = "com.j256.ormlite:ormlite-android:${ormLiteVer}"
-
   ext.glideVer = '3.6.1'
   ext.glide = "com.github.bumptech.glide:glide:${glideVer}"
 
