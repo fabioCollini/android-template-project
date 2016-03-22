@@ -4,6 +4,8 @@ import nl.bijdorpstudio.funda.app.inject.AppComponent;
 
 import static org.mockito.Mockito.mock;
 
+// This class will be used by Robolectric
+@SuppressWarnings( "unused" )
 public class TestFundaApp
     extends FundaApp
 {
