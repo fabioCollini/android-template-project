@@ -5,9 +5,9 @@ buildscript {
 
   dependencies {
     classpath 'com.android.tools.build:gradle:1.5.0'
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.11.3'
-    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
-    classpath 'me.tatarka:gradle-retrolambda:3.2.3'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.12.0'
+    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    classpath 'me.tatarka:gradle-retrolambda:3.2.5'
   }
 }
 
@@ -25,7 +25,7 @@ allprojects {
   ext.minSdkVer = 17
   ext.targetSdkVer = 23
 
-  ext.supportLibraryVer = '23.1.0'
+  ext.supportLibraryVer = '23.2.1'
   ext.supportAnnotations = "com.android.support:support-annotations:${supportLibraryVer}"
   ext.supportAppCompat = "com.android.support:appcompat-v7:${supportLibraryVer}"
   ext.supportDesign = "com.android.support:design:${supportLibraryVer}"
@@ -33,17 +33,17 @@ allprojects {
   ext.javaxInjectVer = '1'
   ext.javaxInject = "javax.inject:javax.inject:${javaxInjectVer}"
 
-  ext.daggerVer = '2.0.2'
+  ext.daggerVer = '2.1'
   ext.dagger = "com.google.dagger:dagger:${daggerVer}"
   ext.daggerCompiler = "com.google.dagger:dagger-compiler:${daggerVer}"
 
   ext.javaxAnnotationsVer = '10.0-b28'
   ext.javaxAnnotations = "org.glassfish:javax.annotation:${javaxAnnotationsVer}"
 
-  ext.rxJavaVer = '1.0.16'
+  ext.rxJavaVer = '1.1.2'
   ext.rxJava = "io.reactivex:rxjava:${rxJavaVer}"
 
-  ext.rxAndroidVer = '1.0.1'
+  ext.rxAndroidVer = '1.1.0'
   ext.rxAndroid = "io.reactivex:rxandroid:${rxAndroidVer}"
 
   ext.retrofitVer = '2.0.0-beta2'
@@ -63,7 +63,7 @@ allprojects {
   ext.mockitoVer = '1.10.17'
   ext.mockito = "org.mockito:mockito-all:${mockitoVer}"
 
-  ext.assertJVer = '2.1.0'
+  ext.assertJVer = '3.3.0'
   ext.assertJCore = "org.assertj:assertj-core:${assertJVer}"
 
   ext.androidAssertJVer = '1.1.1'
@@ -82,5 +82,5 @@ allprojects {
 }
 
 task wrapper( type: Wrapper ) {
-  gradleVersion = '2.9'
+  gradleVersion = '2.12'
 }
