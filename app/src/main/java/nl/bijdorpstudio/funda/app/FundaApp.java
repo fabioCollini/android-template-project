@@ -1,6 +1,8 @@
 package nl.bijdorpstudio.funda.app;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 import nl.bijdorpstudio.funda.app.inject.AppComponent;
 import nl.bijdorpstudio.funda.app.inject.DaggerAppComponent;
 import nl.bijdorpstudio.funda.network.inject.NetworkModule;
@@ -41,5 +43,11 @@ public class FundaApp
         }
 
         return super.getSystemService( name );
+    }
+
+    @VisibleForTesting
+    protected void setAppComponent( @NonNull final AppComponent testAppComponent )
+    {
+        component = testAppComponent;
     }
 }

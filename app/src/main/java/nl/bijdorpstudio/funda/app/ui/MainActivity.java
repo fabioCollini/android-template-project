@@ -18,6 +18,7 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -27,9 +28,11 @@ public class MainActivity
     @Bind( R.id.recycler_view )
     RecyclerView recyclerView;
 
-    private BrokersAdapter brokersAdapter;
+    @Inject
+    BrokersAdapter brokersAdapter;
 
-    private Funda funda;
+    @Inject
+    Funda funda;
 
     @Override
     protected void onCreate( Bundle savedInstanceState )
@@ -61,8 +64,7 @@ public class MainActivity
             (AppComponent) getApplicationContext().getSystemService( FundaApp.APP_INJECTION );
         final ActivityComponent activityComponent = component.getActivityComponent();
 
-        brokersAdapter = activityComponent.createBrokersAdapter();
-        funda = activityComponent.getFundaService();
+        activityComponent.inject(this);
     }
 
     private void setupUI()
