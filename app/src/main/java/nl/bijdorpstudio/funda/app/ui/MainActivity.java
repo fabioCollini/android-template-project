@@ -6,21 +6,22 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import javax.inject.Inject;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import nl.bijdorpstudio.funda.app.FundaApp;
 import nl.bijdorpstudio.funda.app.R;
-import nl.bijdorpstudio.funda.app.inject.ActivityComponent;
 import nl.bijdorpstudio.funda.app.inject.AppComponent;
 import nl.bijdorpstudio.funda.core.Funda;
 import nl.bijdorpstudio.funda.core.data.Broker;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-
-import javax.inject.Inject;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity
     extends AppCompatActivity
@@ -62,9 +63,8 @@ public class MainActivity
         //noinspection ResourceType
         final AppComponent component =
             (AppComponent) getApplicationContext().getSystemService( FundaApp.APP_INJECTION );
-        final ActivityComponent activityComponent = component.getActivityComponent();
 
-        activityComponent.inject(this);
+        component.inject(this);
     }
 
     private void setupUI()

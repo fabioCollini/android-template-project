@@ -2,19 +2,19 @@ package nl.bijdorpstudio.funda.core;
 
 import android.support.annotation.NonNull;
 import android.util.Pair;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 import nl.bijdorpstudio.funda.core.data.Broker;
 import nl.bijdorpstudio.funda.core.data.Proposition;
 import nl.bijdorpstudio.funda.core.network.Network;
 import nl.bijdorpstudio.funda.core.network.Pagination;
 import nl.bijdorpstudio.funda.core.network.Response;
 import rx.Observable;
-
-import javax.inject.Inject;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
 
 public class Funda
 {
@@ -23,7 +23,6 @@ public class Funda
     @NonNull
     private final Network network;
 
-    @Inject
     public Funda( @NonNull final Network network )
     {
         this.network = network;

@@ -1,16 +1,18 @@
 package nl.bijdorpstudio.funda.network.inject;
 
 import android.support.annotation.NonNull;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
+import nl.bijdorpstudio.funda.core.Funda;
 import nl.bijdorpstudio.funda.core.network.Network;
 import nl.bijdorpstudio.funda.network.FundaService;
 import nl.bijdorpstudio.funda.network.NetworkImpl;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
-
-import javax.inject.Singleton;
 
 @Module
 public class NetworkModule
@@ -51,5 +53,12 @@ public class NetworkModule
     public Network provideNetwork( @NonNull final FundaService fundaService, @NonNull final String apiKey )
     {
         return new NetworkImpl( fundaService, apiKey );
+    }
+
+    @Provides
+    @NonNull
+    public Funda provideFunda(Network network)
+    {
+        return new Funda(network);
     }
 }

@@ -52,6 +52,8 @@ dependencies {
   testCompile junit
   testCompile mockito
   testCompile assertJCore
+  testCompile dagger
+  testCompile daggerMock
   testCompile robolectric
   testCompile( androidAssertJ ) {
     exclude group: 'com.android.support', module: 'support-annotations'

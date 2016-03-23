@@ -46,7 +46,7 @@ public class FundaApp
     }
 
     @VisibleForTesting
-    protected void setAppComponent( @NonNull final AppComponent testAppComponent )
+    public void setAppComponent( @NonNull final AppComponent testAppComponent )
     {
         component = testAppComponent;
     }
